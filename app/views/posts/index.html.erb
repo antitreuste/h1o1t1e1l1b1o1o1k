@@ -4,8 +4,8 @@
 			<div class="row">
 				<% if params[:category].blank? %>
 					<div class="col-md-8">
-						<h1 class="title"><strong>Trouver une article</strong></h1>
-						<p class="editContent">No fluff. Nothing should lead the visitor away from the main essence of website.</p>
+						<h1 class="title"><strong>Trouver un article</strong></h1>
+						<p class="editContent">Saisissez vos mots clés et nous répondons à votre recherche ..</p>
 					</div>
 					<div class="col-md-8">
 						<%= form_tag posts_path, :method => 'get' do %>
@@ -24,7 +24,7 @@
 				<% else %>
 					<div class="col-md-8">
 						<h1 class="title"><strong>Resultat de votre filtre <%= params[:category] %></strong></h1>
-						<p class="editContent">No fluff. Nothing should lead the visitor away from the main essence of website.</p>
+						<p class="editContent"></p>
 					</div>
 				<% end %>
 			</div>
@@ -46,28 +46,37 @@
 
 
 <div id="wrap">
-	<% @posts.each do |post| %>
+	<% if @posts.blank?%>
 		<div class="container containerid">
 			<div class="">
-				<ul class="">
-					<li class="">
-						<div class="col-md-2">
-							<%= image_tag post.user.logo.url(:small), class: "img-thumbnail img-circle" %>
-						</div>
-						<div class="col-md-10">
-							<h3><strong><%= link_to post.titre, post %></strong></h3>
-							<p> <%= truncate(post.description, length: 300) %> </p>
-							<div>
-								<h5><small><i class="glyphicon glyphicon-home"></i>  <%= link_to post.user.nom, post %> </small> &nbsp;&nbsp;&nbsp;&nbsp;   
-								<%if post.comments.count != 0 %>
-									<small><i class="glyphicon glyphicon-comment"></i>   Commentaires <span class="badge"><%= post.comments.count %></span></small>
-								<% end %> </h5><hr />
-							</div>
-						</div>
-					</li>
-				</ul>
+				<h2> Aucun article trouvé ...</h2>
 			</div>
 		</div>
+	<% else %>
+
+		<% @posts.each do |post| %>
+			<div class="container containerid">
+				<div class="">
+					<ul class="">
+						<li class="">
+							<div class="col-md-2">
+								<%= image_tag post.user.logo.url(:small), class: "img-thumbnail img-circle" %>
+							</div>
+							<div class="col-md-10">
+								<h3><strong><%= link_to post.titre, post %></strong></h3>
+								<p> <%= truncate(post.description, length: 300) %> </p>
+								<div>
+									<h5><small><i class="glyphicon glyphicon-home"></i>  <%= link_to post.user.nom, post %> </small> &nbsp;&nbsp;&nbsp;&nbsp;   
+									<%if post.comments.count != 0 %>
+										<small><i class="glyphicon glyphicon-comment"></i>   Commentaires <span class="badge"><%= post.comments.count %></span></small>
+									<% end %> </h5><hr />
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		<% end %>
 	<% end %>
 	<div class="container containerid mapagination ">
 		<% if params[:search].blank? %>
