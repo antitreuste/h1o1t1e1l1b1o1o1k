@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 
 gem 'rails', '4.2.6'
-gem 'sqlite3'
+
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'uglifier', '>= 1.3.0'
@@ -17,6 +17,7 @@ gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'rails_admin', '~> 0.8.1'
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
 gem 'best_in_place', '~> 3.0.1'
+gem 'faker', '~> 1.6', '>= 1.6.3'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -25,8 +26,13 @@ group :development, :test do
 end
 
 group :development do
+  gem 'sqlite3'
   gem 'web-console', '~> 2.0'
-  gem 'faker', '~> 1.6', '>= 1.6.3'
+end
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
