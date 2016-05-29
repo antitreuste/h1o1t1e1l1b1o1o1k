@@ -18,6 +18,7 @@ gem 'rails_admin', '~> 0.8.1'
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
 gem 'best_in_place', '~> 3.0.1'
 gem 'faker', '~> 1.6', '>= 1.6.3'
+gem 'aws-sdk', '~> 2.3', '>= 2.3.9'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 

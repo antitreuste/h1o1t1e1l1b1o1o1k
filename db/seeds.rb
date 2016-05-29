@@ -12,7 +12,7 @@ Category.where(nom: "Fournisseurs").first_or_create(nom: "Fournisseurs")
 Category.where(nom: "Autres").first_or_create(nom: "Autres")
 
 
-User.where(email: "marouan@gmail.com").first_or_create(email: "marouan@gmail.com" , password: "12345678", nom: Faker::Company.name, siteweb: Faker::Internet.url)
+User.where(email: "marouan@gmail.com").first_or_create(email: "marouan@gmail.com" , password: "12345678", nom: Faker::Company.name, siteweb: Faker::Internet.url, admin: true)
 User.where(email: "marouan1@gmail.com").first_or_create(email: "marouan1@gmail.com" , password: "12345678", nom: Faker::Company.name,  siteweb: Faker::Internet.url)
 User.where(email: "marouan2@gmail.com").first_or_create(email: "marouan2@gmail.com" , password: "12345678", nom: Faker::Company.name,  siteweb: Faker::Internet.url)
 
